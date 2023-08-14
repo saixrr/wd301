@@ -32,10 +32,6 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
   };
   addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    if (this.state.todoTitle.trim() === '' || this.state.todoDueDate.trim() === '') {
-      console.log("Title and Due Date are required");
-      return; // Prevent adding the task
-    }
     const newTask = {
       todoTitle:this.state.todoTitle,
       todoDueDate:this.state.todoDueDate,
@@ -48,8 +44,8 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
   render(){
     return (
       <form onSubmit={this.addTask}>
-        <input  placeholder="Title" id="todoTitle" type="text" value={this.state.todoTitle} onChange={this.titleChanged}/>
-        <input  placeholder="DueDate" id="todoDueDate" type="text" value={this.state.todoDueDate} onChange={this.DueDateChanged}/>
+        <input required placeholder="Title" id="todoTitle" type="text" value={this.state.todoTitle} onChange={this.titleChanged}/>
+        <input required placeholder="DueDate" id="todoDueDate" type="text" value={this.state.todoDueDate} onChange={this.DueDateChanged}/>
         <input placeholder="Description" id="todoDescription" type="text" value={this.state.todoDescription} onChange={this.DescriptionChanged}/>
         <button id="addTaskButton" type="submit">Add item</button>
       </form>
