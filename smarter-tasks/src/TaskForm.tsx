@@ -42,7 +42,7 @@ return (
   <form onSubmit={addTask}>
     <div className="grid md:grid-cols-4 md:gap-3">
       <div className="relative z-0 w-full mb-6 group">
-        <input
+        <input required
           id="todoTitle"
           name="todoTitle"
           type="text"
@@ -59,7 +59,7 @@ return (
         </label>
       </div>
       <div className="relative z-0 w-full mb-6 group">
-        <input
+        <input required
           id="todoDescription"
           name="todoDescription"
           type="text"
@@ -94,12 +94,14 @@ return (
         </label>
       </div>
       <div className="relative z-0 w-full mb-6 group">
-        <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Add item
-        </button>
+      <button
+      id="addTaskButton"
+      type="submit"
+      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+>
+  Add item
+</button>
+
       </div>
     </div>
   </form>
