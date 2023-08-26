@@ -1,11 +1,10 @@
 
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { TaskItem } from "./types";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 import "./TaskCard.css";
 import { useLocalStorage } from "./hooks/useLocalStorage";
-React.useState<TaskAppState>;
 
 // interface TaskAppProp {}
 interface TaskAppState {
@@ -15,7 +14,7 @@ const TaskApp = () => {
   const [TaskAppState, setTaskAppState] = useLocalStorage<TaskAppState>("tasks", {
     tasks: [],
   });
-  React.useEffect(() => {
+  useEffect(() => {
     const id = setTimeout(() => {
       console.log(`Saved ${TaskAppState.tasks.length} items to backend...`);
     }, 5000);
