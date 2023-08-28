@@ -2,11 +2,10 @@
 import "./TaskCard.css";
 // import { TaskItem } from './types';
 interface TaskProp {
-  idx:string
   todoTitle: string;
   todoDescription:string;
   todoDueDate:string;
-  onDelete:(id:string)=>void;
+  onDelete:()=>void;
 }
 
 const Task=(props:TaskProp)=>{
@@ -21,8 +20,8 @@ const Task=(props:TaskProp)=>{
         </p>
         <button
           className="deleteTaskButton"
-          onClick={() => props.onDelete(props.idx)}>
-          Delete
+            onClick={() => props.onDelete()}>
+            Delete
         </button>
       </div>
     );
