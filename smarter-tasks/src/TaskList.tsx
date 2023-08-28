@@ -3,10 +3,13 @@ import { TaskItem } from "./types";
 
 interface Props {
   tasks: TaskItem[];
-  deleteTask: (indexToDelete: number) => void;
+  onDelete: (indexToDelete: number) => void;
 }
 
 const TaskList = (props: Props) => {
+  const deleteTask=(index:number)=>{
+    props.onDelete(index);
+  }
   return (
     <ul>
       {props.tasks.map((task, idx) => (
@@ -15,13 +18,14 @@ const TaskList = (props: Props) => {
             todoTitle={task.todoTitle}
             todoDueDate={task.todoDueDate}
             todoDescription={task.todoDescription}
+            onDelete={()=>deleteTask(idx)}
           />
-          <button
+          {/* <button
             className="deleteTaskButton"
             onClick={() => props.deleteTask(idx)}
           >
             Delete
-          </button>
+          </button> */}
         </li>
       ))}
     </ul>
