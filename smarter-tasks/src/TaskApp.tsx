@@ -59,7 +59,7 @@ const TaskApp = () => {
           <ul>
             <TaskList
               tasks={taskAppState.tasks}
-              deleteTask={deleteTask}
+              onDelete={(index)=>deleteTask(index)}
             />
           </ul>
         </div>
