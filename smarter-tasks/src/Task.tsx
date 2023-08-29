@@ -10,7 +10,8 @@ interface TaskProp {
 
 const Task=(props:TaskProp)=>{
   return (
-      <div className="TaskItem shadow-md border border-slate-100">
+    <li className="TaskItem">
+      <div className="shadow-md border border-slate-100">
         <h2 className="text-base font-bold my-1">Title:{props.todoTitle}</h2>
         <p className=" text-sm text-slate-500">
           Due Date:{props.todoDueDate}
@@ -24,6 +25,7 @@ const Task=(props:TaskProp)=>{
             Delete
         </button>
       </div>
+      </li>
     );
 };
   
