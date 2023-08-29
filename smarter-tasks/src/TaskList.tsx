@@ -13,7 +13,7 @@ const TaskList = (props: Props) => {
   return (
     <ul>
       {props.tasks.map((task, idx) => (
-        <li key={idx} className="TaskItem shadow-md border border-slate-100">
+        <li key={idx} className="shadow-md border border-slate-100">
           <Task
             todoTitle={task.todoTitle}
             todoDueDate={task.todoDueDate}
