@@ -20,12 +20,6 @@ const TaskList = (props: Props) => {
             todoDescription={task.todoDescription}
             onDelete={()=>deleteTask(idx)}
           />
-          {/* <button
-            className="deleteTaskButton"
-            onClick={() => props.deleteTask(idx)}
-          >
-            Delete
-          </button> */}
         </li>
       ))}
     </ul>
