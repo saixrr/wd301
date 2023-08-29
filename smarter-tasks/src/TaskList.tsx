@@ -7,22 +7,18 @@ interface Props {
 }
 
 const TaskList = (props: Props) => {
-  const deleteTask=(index:number)=>{
-    props.onDelete(index);
-  }
   return (
-    <ul>
+    <div>
       {props.tasks.map((task, idx) => (
-        <li key={idx} className="shadow-md border border-slate-100">
-          <Task
-            todoTitle={task.todoTitle}
-            todoDueDate={task.todoDueDate}
-            todoDescription={task.todoDescription}
-            onDelete={()=>deleteTask(idx)}
-          />
-        </li>
+        <Task
+          key={idx}
+          todoTitle={task.todoTitle}
+          todoDueDate={task.todoDueDate}
+          todoDescription={task.todoDescription}
+          onDelete={() => props.onDelete(idx)}
+        />
       ))}
-    </ul>
+    </div>
   );
 };
 
