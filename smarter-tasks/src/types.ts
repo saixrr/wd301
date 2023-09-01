@@ -1,5 +1,8 @@
+// import { IntegerDataType } from "sequelize";
+
 export interface TaskItem {
-    todoTitle: string;
+    id:string,
+    todoTitle: string,
     todoDueDate:string,
     todoDescription:string,
   }
