@@ -14,7 +14,7 @@ interface TaskFormState {
 
 const TaskForm = (props: TaskFormProps) => {
   const [formState, setFormState] = React.useState<TaskFormState>({
-    id:"",
+    id:String(0),
     todoTitle: "",
     todoDescription: "",
     todoDueDate: "",
@@ -37,12 +37,17 @@ const TaskForm = (props: TaskFormProps) => {
     if (!formState.todoTitle || !formState.todoDueDate) {
       return;
     }
-    props.addTask(formState);
-    setFormState({ id:"",todoTitle: "", todoDueDate: "", todoDescription: "" });
+    const newTask = {
+      ...formState,
+      id: String(Number(formState.id) + 1), // Increment the id
+    };
+    props.addTask(newTask);
+    setFormState({ id:String(Number(formState.id) +1),todoTitle: "", todoDueDate: "", todoDescription: "" });
   };
 
   return (
     <form onSubmit={addTask}>
+      <input type="hidden" id="id" name="id" value={formState.id} />
       <div className="grid md:grid-cols-4 md:gap-3">
         <div className="relative z-0 w-full mb-6 group">
           <input
