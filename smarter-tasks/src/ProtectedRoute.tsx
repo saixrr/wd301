@@ -1,16 +1,11 @@
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({ children }: { children: JSX.Element }) {
-  const authenticated = localStorage.getItem("authenticated");
+  const isAuthenticated = localStorage.getItem("authenticated") === "true";
 
-  if (authenticated === 'true') {
+  if (isAuthenticated) {
     return <>{children}</>;
   } else {
-    const currentPath = window.location.pathname;
-    if (currentPath !== "/notfound") {
-      return <Navigate to="/signin" />;
-    } else {
-      return <>{children}</>;
-    }
+    return <Navigate to="/signin" />;
   }
 }
