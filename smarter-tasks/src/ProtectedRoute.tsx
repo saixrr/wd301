@@ -8,7 +8,7 @@ export default function ProtectedRoute({ children }: { children: JSX.Element }) 
   } else {
     const currentPath = window.location.pathname;
     if (currentPath !== "/notfound") {
-      return <Navigate to="/notfound" />;
+      return <Navigate to="/signin" />;
     } else {
       return <>{children}</>;
     }
