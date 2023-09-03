@@ -21,6 +21,10 @@ const router = createBrowserRouter([
     element: <Signin />,
   },
   {
+    path: "/*",
+    element: <Navigate to="/notfound" replace />,
+  },
+  {
     element: (
       <ProtectedRoute>
         <Layout />
@@ -41,10 +45,6 @@ const router = createBrowserRouter([
       },
       {
         path: "notfound",
-        element: <Notfound />,
-      },
-      {
-        path: "*",
         element: <Notfound />,
       },
     ],
