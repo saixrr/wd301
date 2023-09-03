@@ -1,3 +1,4 @@
+// import React from "react";
 import Task from "./Task";
 import { TaskItem } from "./types";
 
@@ -12,10 +13,8 @@ const TaskList = (props: Props) => {
       {props.tasks.map((task, idx) => (
         <Task
           key={idx}
-          todoTitle={task.todoTitle}
-          todoDueDate={task.todoDueDate}
-          todoDescription={task.todoDescription}
-          onDelete={() => props.onDelete(idx)}
+          item={task} // Pass the task object as 'item' prop
+          removeTask={() => props.onDelete(idx)} // Rename 'onDelete' to 'removeTask'
         />
       ))}
     </div>
