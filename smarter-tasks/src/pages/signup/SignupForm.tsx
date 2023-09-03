@@ -30,7 +30,7 @@ const SignupForm: React.FC = () => {
       localStorage.setItem('userData', JSON.stringify(data.user))
       console.log(data)
 
-      navigate('/dashboard');
+      navigate('/signin');
 
     } catch (error) {
       console.error('Sign-up failed:', error);
