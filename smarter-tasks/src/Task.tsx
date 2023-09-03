@@ -7,6 +7,9 @@ interface TaskProps {
 }
 const Task = (props: TaskProps) => {
   const { item, removeTask } = props;
+  if (!item || !item.id) {
+    return null; // or display an error message
+  }
   return (
     <div className="TaskItem shadow-md border border-slate-100">
       <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
