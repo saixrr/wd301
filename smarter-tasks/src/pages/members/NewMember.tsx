@@ -48,6 +48,7 @@ const NewMember = () => {
   return (
     <>
       <button
+        id="new-member-btn"
         type="button"
         onClick={openModal}
         className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
@@ -88,6 +89,7 @@ const NewMember = () => {
                   <div className="mt-2">
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <input
+                        id="name"
                         type="text"
                         placeholder="Name"
                         {...register('name', { required: true })}
@@ -97,6 +99,7 @@ const NewMember = () => {
                       />
                       {errors.name && <span className="text-red-500">Name is required</span>}
                       <input
+                        id="email"
                         type="email"
                         placeholder="Email"
                         {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
@@ -106,6 +109,7 @@ const NewMember = () => {
                       />
                       {errors.email && <span className="text-red-500">Valid email is required</span>}
                       <input
+                        id="password"
                         type="password"
                         placeholder="Password"
                         {...register('password', { required: true })}
@@ -116,6 +120,7 @@ const NewMember = () => {
                       {errors.password && <span className="text-red-500">Password is required</span>}
                       {error && <span className="text-red-500">{error}</span>}
                       <button
+                        id="create-member-btn"
                         type="submit"
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 mr-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
