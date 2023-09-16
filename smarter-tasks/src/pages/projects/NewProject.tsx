@@ -9,7 +9,7 @@ type Inputs = {
 
 const NewProject = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
-    const [name, setName] = useState('');
+    // const [name, setName] = useState('');
     let [isOpen, setIsOpen] = useState(false)
     const openModal = () => {
         setIsOpen(true)
