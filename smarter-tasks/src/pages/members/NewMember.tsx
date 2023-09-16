@@ -41,7 +41,7 @@ const NewMember = () => {
       setIsOpen(false);
     } else {
       // Or I'll set the error.
-      setError(response.error as React.SetStateAction<null>);
+      setError(response.error as string | null);
     }
   };
 
