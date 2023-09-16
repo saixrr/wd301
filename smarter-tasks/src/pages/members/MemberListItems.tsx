@@ -1,22 +1,21 @@
 // import React from 'react';
-import { useMembersState,useMembersDispatch } from  "../../context/members/context";
-import { deleteMember } from "../../context/members/actions";
-import { SubmitHandler } from "react-hook-form";
+import { useMembersState } from  "../../context/members/context";
+
+// type Inputs = {
+//   id: number;
+// }
 
 export default function MemberListItems() {
-  let dispatchMembers = useMembersDispatch();
-  const state = useMembersState();
+  const state: any = useMembersState();
   if (!state) {
     return <span>Loading...</span>; // Or handle the loading state accordingly
   }
 
 
-  type Inputs = {
-    id: number;
-  }
+  
   console.log(state)
   const { members, isLoading, isError, errorMessage } = state;
-  console.log
+  console.log(members)
 
   if (isLoading && members.length === 0) {
     return <span>Loading...</span>;
