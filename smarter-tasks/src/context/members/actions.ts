@@ -48,7 +48,7 @@ export const fetchMembers = async (dispatch: any) => {
   }
 };
 
-export const deleteMember = async (dispatch: any, id: number) => {
+export const deleteMember = async (dispatch: any, id: any) => {
   try {
     const token = localStorage.getItem("authToken") ?? "";
     const response = await fetch(`${API_ENDPOINT}/users/${id}`, {
@@ -63,7 +63,7 @@ export const deleteMember = async (dispatch: any, id: number) => {
       return { ok: false, error: data.errors[0].message }
     }
 
-    dispatch({ type: 'DELETE_MEMBER_SUCCESS', payload: id });
+    dispatch({ type: 'REMOVE_MEMBER', payload: id });
 
     return { ok: true }
   } catch (error) {
