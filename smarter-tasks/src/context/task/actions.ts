@@ -1,5 +1,5 @@
 import { API_ENDPOINT } from "../../config/constants";
-import { TaskDetails } from "./types";
+import { TaskDetails ,ProjectData} from "./types";
 import {
   TaskDetailsPayload,
   TaskListAvailableAction,
