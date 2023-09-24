@@ -1,5 +1,5 @@
 import { createBrowserRouter,Navigate } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
 import ProjectContainer from "../pages/projects/ProjectContainer";
 import AccountLayout from "../layouts/account"
 import ProtectedRoute from "../ProtectedRoute"
