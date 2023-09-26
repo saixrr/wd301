@@ -3,7 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import router from "./routes"
 import { ThemeContext } from "./context/theme";
-
+import { CommentsProvider } from "./context/comment/context";
 import { ProjectsProvider } from "./context/projects/context";
 import { MembersProvider } from "./context/members/context";
 
@@ -13,7 +13,9 @@ const App = () => {
      <div className={`h-screen w-full mx-auto py-2 ${theme === "dark" ? "dark" : ""}`}>
       <MembersProvider>
         <ProjectsProvider>
+          <CommentsProvider>
           <RouterProvider router={router} />
+          </CommentsProvider>
         </ProjectsProvider>
   </MembersProvider>
     </div>
