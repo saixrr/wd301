@@ -1,5 +1,5 @@
 import { Dialog, Transition, Listbox } from "@headlessui/react";
-import  { Fragment, useState } from "react";
+import { Fragment, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useTasksDispatch, useTasksState } from "../../context/task/context";
@@ -8,48 +8,39 @@ import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
 import { useProjectsState } from "../../context/projects/context";
 import { TaskDetailsPayload } from "../../context/task/types";
 import { useMembersState } from "../../context/members/context";
+import NewComment from "./NewComment";
 
 type TaskFormUpdatePayload = TaskDetailsPayload & {
   selectedPerson: string;
 };
 
-// Helper function to format the date to YYYY-MM-DD format
 const formatDateForPicker = (isoDate: string) => {
   const dateObj = new Date(isoDate);
   const year = dateObj.getFullYear();
   const month = String(dateObj.getMonth() + 1).padStart(2, "0");
   const day = String(dateObj.getDate()).padStart(2, "0");
-
-  // Format the date as per the required format for the date picker (YYYY-MM-DD)
   return `${year}-${month}-${day}`;
 };
 
 const TaskDetails = () => {
-  let [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
+  const { projectID, taskID } = useParams();
+  const navigate = useNavigate();
 
-  let { projectID, taskID } = useParams();
-  let navigate = useNavigate();
-
-  // Extract project and task details.
+  const memberState = useMembersState();
   const projectState = useProjectsState();
   const taskListState = useTasksState();
   const taskDispatch = useTasksDispatch();
-  const memberState = useMembersState();
 
-  const selectedProject = projectState?.projects.filter(
+
+
+  const selectedProject = projectState?.projects.find(
     (project) => `${project.id}` === projectID
-  )[0];
+  );
 
   const selectedTask = taskListState.projectData.tasks[taskID ?? ""];
 
-  if (!selectedProject) {
-    return <>No such Project!</>;
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-    navigate("../../");
-  }
+ 
 
   const [selectedPerson, setSelectedPerson] = useState(
     selectedTask.assignedUserName ?? ""
@@ -66,11 +57,19 @@ const TaskDetails = () => {
       dueDate: formatDateForPicker(selectedTask.dueDate),
     },
   });
+  if (!selectedProject) {
+    return <>No such Project!</>;
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    navigate("../../");
+  }
 
   const onSubmit: SubmitHandler<TaskFormUpdatePayload> = async (data) => {
-    const assignee = memberState?.members?.filter(
+    const assignee = memberState?.members.find(
       (member) => member.name === selectedPerson
-    )?.[0];
+    );
     updateTask(taskDispatch, projectID ?? "", {
       ...selectedTask,
       ...data,
@@ -139,6 +138,7 @@ const TaskDetails = () => {
                         {...register("dueDate", { required: true })}
                         className="w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
                       />
+
                       <h3><strong>Assignee</strong></h3>
                       <Listbox
                         value={selectedPerson}
@@ -197,6 +197,7 @@ const TaskDetails = () => {
                         Cancel
                       </button>
                     </form>
+                    <NewComment />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
