@@ -9,6 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      API_KEY: ${{ secrets.API_KEY }}
+      # Add other environment variables as needed
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -22,14 +27,19 @@ jobs:
       - name: Build
         run: npm run build  # Adjust based on your project setup
         
-      - name: Run tests
-        run: npm test  # Adjust based on your project setup
+      - name: Run unit tests
+        run: npm test  # Assuming you have unit tests configured
         
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment: production
     
+    env:
+      SERVER_URL: ${{ secrets.SERVER_URL }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+      # Add other environment variables as needed
+
     steps:
       - name: Deploy to production
         run: |
